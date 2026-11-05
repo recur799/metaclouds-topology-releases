@@ -33,8 +33,9 @@
       "程序文件/assets/公司图标.png"
     ],
     "urls": [
+      "https://gitee.com/recur_799/metaclouds-topology-releases/releases/download/v1.0.0/topology-exporter-1.0.0.zip",
       "https://github.com/recur799/metaclouds-topology-releases/releases/download/v1.0.0/topology-exporter-1.0.0.zip"
     ]
   },
-  "signature": "+fCMCUPjKd/ZJPTG9C1356Eij8bo7ZHSP6wuWjtOU8DgufmFASGIb31jo+WdpCFrE0VhHuEQkOO48+yqN4xrDg=="
+  "signature": "jjwfqacFw436PlqcvOZIenX5HXsgD66LywVOMBBK2jRg2HX+06+PXGXKfWzST0n6+RrTiutXrAS2wCnNX7YPCw=="
 }
