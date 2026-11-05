@@ -2,14 +2,14 @@
   "payload": {
     "schema": 1,
     "product": "metaclouds-topology-exporter",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "minimum_python": [
       3,
       10
     ],
-    "notes": "首个正式版：真实拓扑高清 PNG 导出，支持手动检查更新、签名校验和失败恢复。",
-    "size": 333325,
-    "sha256": "a6b4a92c4d93c3da22e6f0b27c1977a2fdc400b725713525859bca270b354a6f",
+    "notes": "修复 Windows ARM64 Python 安装依赖时触发 Rust 编译失败；仅安装预编译包，默认软件源失败后尝试大陆镜像。",
+    "size": 333624,
+    "sha256": "55f6dd89c7e34e282c4c3b222661045c783e45144aec8c8822b55231b7140f77",
     "files": [
       "开始导出.bat",
       "使用说明.txt",
@@ -33,9 +33,9 @@
       "程序文件/assets/公司图标.png"
     ],
     "urls": [
-      "https://gitee.com/recur_799/metaclouds-topology-releases/releases/download/v1.0.0/topology-exporter-1.0.0.zip",
-      "https://github.com/recur799/metaclouds-topology-releases/releases/download/v1.0.0/topology-exporter-1.0.0.zip"
+      "https://gitee.com/recur_799/metaclouds-topology-releases/releases/download/v1.0.1/topology-exporter-1.0.1.zip",
+      "https://github.com/recur799/metaclouds-topology-releases/releases/download/v1.0.1/topology-exporter-1.0.1.zip"
     ]
   },
-  "signature": "jjwfqacFw436PlqcvOZIenX5HXsgD66LywVOMBBK2jRg2HX+06+PXGXKfWzST0n6+RrTiutXrAS2wCnNX7YPCw=="
+  "signature": "bmwpCqJpaN+S3t4Oh+bo5B8jf6LA7k9pt+BvTMvNyLnhJxXTeI0XVxMYm7Fe61poqqEjC8/QcE1/Q/lIDJlkBA=="
 }
