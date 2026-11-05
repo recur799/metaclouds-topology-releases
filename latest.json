@@ -1,0 +1,40 @@
+{
+  "payload": {
+    "schema": 1,
+    "product": "metaclouds-topology-exporter",
+    "version": "1.0.0",
+    "minimum_python": [
+      3,
+      10
+    ],
+    "notes": "首个正式版：真实拓扑高清 PNG 导出，支持手动检查更新、签名校验和失败恢复。",
+    "size": 333325,
+    "sha256": "a6b4a92c4d93c3da22e6f0b27c1977a2fdc400b725713525859bca270b354a6f",
+    "files": [
+      "开始导出.bat",
+      "使用说明.txt",
+      "程序文件/gui.py",
+      "程序文件/api_export.py",
+      "程序文件/controller_api.py",
+      "程序文件/exporter.py",
+      "程序文件/native_adapters.py",
+      "程序文件/native_r010.py",
+      "程序文件/native_x6.py",
+      "程序文件/offline_export.py",
+      "程序文件/native_export.js",
+      "程序文件/browser_capture.js",
+      "程序文件/requirements.txt",
+      "程序文件/bootstrap.py",
+      "程序文件/update_config.py",
+      "程序文件/updater.py",
+      "程序文件/release_layout.py",
+      "程序文件/assets/公司Logo.png",
+      "程序文件/assets/公司Logo.ico",
+      "程序文件/assets/公司图标.png"
+    ],
+    "urls": [
+      "https://github.com/recur799/metaclouds-topology-releases/releases/download/v1.0.0/topology-exporter-1.0.0.zip"
+    ]
+  },
+  "signature": "+fCMCUPjKd/ZJPTG9C1356Eij8bo7ZHSP6wuWjtOU8DgufmFASGIb31jo+WdpCFrE0VhHuEQkOO48+yqN4xrDg=="
+}
