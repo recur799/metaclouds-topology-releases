@@ -2,14 +2,14 @@
   "payload": {
     "schema": 1,
     "product": "metaclouds-topology-exporter",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "minimum_python": [
       3,
       10
     ],
-    "notes": "修复 Windows ARM64 Python 安装依赖时触发 Rust 编译失败；仅安装预编译包，默认软件源失败后尝试大陆镜像。",
-    "size": 333624,
-    "sha256": "55f6dd89c7e34e282c4c3b222661045c783e45144aec8c8822b55231b7140f77",
+    "notes": "MetaClouds 1.1.0\n\n1. 新增一体化网络工作台：连接控制器、选择场所、采集和查看拓扑在同一窗口完成，支持刷新数据、切换场所及切换控制器。\n2. 按接口展示 VLAN、业务名称、网段和网关；路由接口展示 IP／前缀，已确认的设备互联展示对端设备和接口，标签规则收进技术详情。\n3. 详情支持逐级返回，恢复接口搜索、VLAN 筛选和滚动位置；工作台、设备和 VLAN 详情均提供业务标注入口。\n4. VLAN 业务名称保存在本机，重启和更新后保留；结合控制器、场所及拓扑识别项目，网段或拓扑变化时提示核对。\n5. 集中式 VLAN 变更助手支持核心自动识别、同台多接口批量调整、已有网关复用及新建 VLAN 网关，直接提供逐步变更和回退命令。分布式场景可查看拓扑、接口和 VLAN。\n6. 修复原生拓扑遗漏独立设备或完整分支的问题，工作台与 PNG 共用完整结果，并继续检查遗漏和重复身份。\n7. 增加采集进度，修复窗口大小与最大化状态保持，使用公司图标。\n8. 支持已发布的 1.0.0、1.0.1 直接更新并自动打开新工作台，自动处理旧安装器收尾误报；保留导出文件、采集包和本地业务名称。\n",
+    "size": 560193,
+    "sha256": "a5aa40f723e9169a23e50fcbd8b52bda24684b3f2cc6753f505b50b7cbc738c3",
     "files": [
       "开始导出.bat",
       "使用说明.txt",
@@ -27,15 +27,36 @@
       "程序文件/bootstrap.py",
       "程序文件/update_config.py",
       "程序文件/updater.py",
+      "程序文件/update_dialog.py",
       "程序文件/release_layout.py",
+      "程序文件/vlan_engine.py",
+      "程序文件/vlan_gui.py",
+      "程序文件/vlan_bridge.js",
+      "程序文件/vlan-assistant-core.js",
+      "程序文件/vlan_business_names.py",
+      "程序文件/network_snapshot.py",
+      "程序文件/workbench_collect.py",
+      "程序文件/workbench_host.py",
+      "程序文件/workbench_process.py",
+      "程序文件/workbench_native.py",
+      "程序文件/workbench/index.txt",
+      "程序文件/workbench/workbench.css",
+      "程序文件/workbench/workbench.js",
+      "程序文件/workbench/business-names.js",
+      "程序文件/desktop_app.py",
+      "程序文件/workbench/desktop.js",
+      "程序文件/workbench/vlan-ui.js",
+      "程序文件/workbench/x6.js",
+      "程序文件/workbench/x6.css",
+      "程序文件/workbench/LICENSE-X6.txt",
       "程序文件/assets/公司Logo.png",
       "程序文件/assets/公司Logo.ico",
       "程序文件/assets/公司图标.png"
     ],
     "urls": [
-      "https://gitee.com/recur_799/metaclouds-topology-releases/releases/download/v1.0.1/topology-exporter-1.0.1.zip",
-      "https://github.com/recur799/metaclouds-topology-releases/releases/download/v1.0.1/topology-exporter-1.0.1.zip"
+      "https://gitee.com/recur_799/metaclouds-topology-releases/releases/download/v1.1.0/topology-exporter-1.1.0.zip",
+      "https://github.com/recur799/metaclouds-topology-releases/releases/download/v1.1.0/topology-exporter-1.1.0.zip"
     ]
   },
-  "signature": "bmwpCqJpaN+S3t4Oh+bo5B8jf6LA7k9pt+BvTMvNyLnhJxXTeI0XVxMYm7Fe61poqqEjC8/QcE1/Q/lIDJlkBA=="
+  "signature": "hVsI/CiGZ3GqPeW7FrbREXVyvhwAweUgTdyzboPgKBwlcJS125vojKrGTpF+s5BWWBkJiNElR3LdHGV7Nmc5Cg=="
 }
