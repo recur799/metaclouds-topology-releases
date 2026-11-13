@@ -2,14 +2,14 @@
   "payload": {
     "schema": 1,
     "product": "metaclouds-topology-exporter",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "minimum_python": [
       3,
       10
     ],
-    "notes": "1.1.1 · Windows 更新与启动体验优化\n\n修复从 1.0.1 升级后首次启动误报“软件初始化失败”的问题。\n更新下载展示进度，安装完成后自动打开软件；运行组件准备使用进度窗口，默认隐藏命令行和技术日志。\nPython 依赖默认使用清华源，阿里云源备用；Python 安装器、浏览器和 ARM64 桌面运行组件使用国内下载地址。\n补齐 ARM64 Windows 桌面运行组件，解决找不到 System.Windows.Forms 的启动问题。\n保留拓扑、接口 VLAN、业务标注及 VLAN 变更助手功能和本地数据。\n",
-    "size": 567278,
-    "sha256": "34ddf7af7385220a1bb55fd2ce5fb0b9bddf220ceeb0d673bf4c1433a104cbab",
+    "notes": "1. 修复 ARM64 Windows 更新后 SystemEvents 程序集未加载导致工作台启动失败。\n2. 自动识别 x86、x64、ARM64 Windows，首次准备时选择对应 Python 安装组件，兼容模拟运行的命令行。\n3. 通用更新包按实际 Python 进程架构加载桌面组件，保留更新健康检查和失败回滚。",
+    "size": 567374,
+    "sha256": "7d1e123353524cc85529518653c064f0d7a0328680e673f0c8f7b2098ae663c9",
     "files": [
       "开始导出.bat",
       "使用说明.txt",
@@ -56,9 +56,9 @@
       "程序文件/assets/公司图标.png"
     ],
     "urls": [
-      "https://gitee.com/recur_799/metaclouds-topology-releases/releases/download/v1.1.1/topology-exporter-1.1.1.zip",
-      "https://github.com/recur799/metaclouds-topology-releases/releases/download/v1.1.1/topology-exporter-1.1.1.zip"
+      "https://gitee.com/recur_799/metaclouds-topology-releases/releases/download/v1.1.2/topology-exporter-1.1.2.zip",
+      "https://github.com/recur799/metaclouds-topology-releases/releases/download/v1.1.2/topology-exporter-1.1.2.zip"
     ]
   },
-  "signature": "M1CMzMO8LJrQR9ZsNFXP9r1Q9VIlLwMulGyvoK2Wn09JDHFQpoSNYQxWkpgPzAKMWNGKzmwM8l5RZDuGG5HBDQ=="
+  "signature": "ZY5lVDLPAuRsLTpD9x+paEdKVpX5u/7208iZh1tbyktGCwFUVJmSSL2pxe2zQA2ZZmerv88z8YcdzQ0n4JT3AA=="
 }
