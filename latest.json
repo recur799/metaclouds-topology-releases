@@ -2,14 +2,14 @@
   "payload": {
     "schema": 1,
     "product": "metaclouds-topology-exporter",
-    "version": "1.1.2",
+    "version": "1.1.3",
     "minimum_python": [
       3,
       10
     ],
-    "notes": "1. 修复 ARM64 Windows 更新后 SystemEvents 程序集未加载导致工作台启动失败。\n2. 自动识别 x86、x64、ARM64 Windows，首次准备时选择对应 Python 安装组件，兼容模拟运行的命令行。\n3. 通用更新包按实际 Python 进程架构加载桌面组件，保留更新健康检查和失败回滚。",
-    "size": 567374,
-    "sha256": "7d1e123353524cc85529518653c064f0d7a0328680e673f0c8f7b2098ae663c9",
+    "notes": "1. 修复 ARM64 Windows 在 CoreCLR 下加载 pywebview 时文件夹对话框反射失败的问题。\n2. ARM64 使用公开的 Windows 文件夹对话框 API，避免依赖 .NET Framework 私有类型。\n3. 保留 ARM 桌面程序集加载、SystemEvents 验证、架构检测和更新失败回滚。",
+    "size": 568712,
+    "sha256": "0aacc412aa6842ee451de87933229c50357657f5cc4a5f9ce5c457be4eff81db",
     "files": [
       "开始导出.bat",
       "使用说明.txt",
@@ -26,6 +26,7 @@
       "程序文件/requirements.txt",
       "程序文件/bootstrap.py",
       "程序文件/windows_runtime.py",
+      "程序文件/windows_webview.py",
       "程序文件/dotnet-runtime-mirror.txt",
       "程序文件/update_config.py",
       "程序文件/updater.py",
@@ -56,9 +57,8 @@
       "程序文件/assets/公司图标.png"
     ],
     "urls": [
-      "https://gitee.com/recur_799/metaclouds-topology-releases/releases/download/v1.1.2/topology-exporter-1.1.2.zip",
-      "https://github.com/recur799/metaclouds-topology-releases/releases/download/v1.1.2/topology-exporter-1.1.2.zip"
+      "https://github.com/recur799/metaclouds-topology-releases/releases/download/v1.1.3/topology-exporter-1.1.3.zip"
     ]
   },
-  "signature": "ZY5lVDLPAuRsLTpD9x+paEdKVpX5u/7208iZh1tbyktGCwFUVJmSSL2pxe2zQA2ZZmerv88z8YcdzQ0n4JT3AA=="
+  "signature": "uIcaRStkpbGHk6DTKDq8heQ5vUdm7F/BS23YyToHlo1D0q9De2Yrj7NO8JKUm9Jv+Zcfb1i/gP1+Qf4HLXQvDQ=="
 }
