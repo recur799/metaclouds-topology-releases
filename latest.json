@@ -2,14 +2,51 @@
   "payload": {
     "schema": 1,
     "product": "metaclouds-topology-exporter",
-    "version": "1.1.3",
+    "version": "1.1.4",
     "minimum_python": [
       3,
       10
     ],
-    "notes": "1. 修复 ARM64 Windows 在 CoreCLR 下加载 pywebview 时文件夹对话框反射失败的问题。\n2. ARM64 使用公开的 Windows 文件夹对话框 API，避免依赖 .NET Framework 私有类型。\n3. 保留 ARM 桌面程序集加载、SystemEvents 验证、架构检测和更新失败回滚。",
-    "size": 568712,
-    "sha256": "0aacc412aa6842ee451de87933229c50357657f5cc4a5f9ce5c457be4eff81db",
+    "notes": "1. 工具更名为“元创云端运维巡检工具”，统一首页、窗口及运行组件准备界面的名称。\n2. 主机联网时启动后自动检查更新，运行期间每30分钟重查，网络恢复时再检查；只提示新版本，不自动弹窗或安装。\n3. 点击更新按钮可查看全部正式版本的更新明细，按版本从新到旧排列；断网时可查看本地随包附带的记录，用户确认后才更新并重启。\n4. 修复集中式网关及异构网络的拓扑遗漏，完善独立设备、未分配角色与外部设备的完整展示。\n5. Sundray RS6300、H3C Comware、MikroTik RouterOS 使用交换机图例；恢复原有绿色圆角拓扑连线，整理分支顺序和端口标签。\n6. 多邻居端口缺少对端确认时不再误判为物理直连，修复35F-JK-POE 24口误连总核心的问题，保留原始上报供核对。\n7. 完善 DHCP 地址池、分配记录、终端接入定位与补充告警，兼容 Windows x86、x64、ARM64 运行环境。\n",
+    "history": [
+      {
+        "version": "1.1.4",
+        "date": "2026-11-16",
+        "notes": "1. 工具更名为“元创云端运维巡检工具”，统一首页、窗口及运行组件准备界面的名称。\n2. 主机联网时启动后自动检查更新，运行期间每30分钟重查，网络恢复时再检查；只提示新版本，不自动弹窗或安装。\n3. 点击更新按钮可查看全部正式版本的更新明细，按版本从新到旧排列；断网时可查看本地随包附带的记录，用户确认后才更新并重启。\n4. 修复集中式网关及异构网络的拓扑遗漏，完善独立设备、未分配角色与外部设备的完整展示。\n5. Sundray RS6300、H3C Comware、MikroTik RouterOS 使用交换机图例；恢复原有绿色圆角拓扑连线，整理分支顺序和端口标签。\n6. 多邻居端口缺少对端确认时不再误判为物理直连，修复35F-JK-POE 24口误连总核心的问题，保留原始上报供核对。\n7. 完善 DHCP 地址池、分配记录、终端接入定位与补充告警，兼容 Windows x86、x64、ARM64 运行环境。"
+      },
+      {
+        "date": "2026-11-13",
+        "notes": "1. 修复 ARM64 Windows 在 CoreCLR 下加载 pywebview 时文件夹对话框反射失败的问题。\r\n2. ARM64 使用公开的 Windows 文件夹对话框 API，避免依赖 .NET Framework 私有类型。\r\n3. 保留 ARM 桌面程序集加载、SystemEvents 验证、架构检测和更新失败回滚。",
+        "version": "1.1.3"
+      },
+      {
+        "date": "2026-11-13",
+        "notes": "1. 修复 ARM64 Windows 更新后 SystemEvents 程序集未加载导致工作台启动失败。\r\n2. 自动识别 x86、x64、ARM64 Windows，首次准备时选择对应 Python 安装组件，兼容模拟运行的命令行。\r\n3. 通用更新包按实际 Python 进程架构加载桌面组件，保留更新健康检查和失败回滚。",
+        "version": "1.1.2"
+      },
+      {
+        "date": "2026-11-06",
+        "notes": "1.1.1 · Windows 更新与启动体验优化\r\n\r\n修复从 1.0.1 升级后首次启动误报“软件初始化失败”的问题。\r\n更新下载展示进度，安装完成后自动打开软件；运行组件准备使用进度窗口，默认隐藏命令行和技术日志。\r\nPython 依赖默认使用清华源，阿里云源备用；Python 安装器、浏览器和 ARM64 桌面运行组件使用国内下载地址。\r\n补齐 ARM64 Windows 桌面运行组件，解决找不到 System.Windows.Forms 的启动问题。\r\n保留拓扑、接口 VLAN、业务标注及 VLAN 变更助手功能和本地数据。\r\n",
+        "version": "1.1.1"
+      },
+      {
+        "date": "2026-11-06",
+        "notes": "MetaClouds 1.1.0\r\n\r\n1. 新增一体化网络工作台：连接控制器、选择场所、采集和查看拓扑在同一窗口完成，支持刷新数据、切换场所及切换控制器。\r\n2. 按接口展示 VLAN、业务名称、网段和网关；路由接口展示 IP／前缀，已确认的设备互联展示对端设备和接口，标签规则收进技术详情。\r\n3. 详情支持逐级返回，恢复接口搜索、VLAN 筛选和滚动位置；工作台、设备和 VLAN 详情均提供业务标注入口。\r\n4. VLAN 业务名称保存在本机，重启和更新后保留；结合控制器、场所及拓扑识别项目，网段或拓扑变化时提示核对。\r\n5. 集中式 VLAN 变更助手支持核心自动识别、同台多接口批量调整、已有网关复用及新建 VLAN 网关，直接提供逐步变更和回退命令。分布式场景可查看拓扑、接口和 VLAN。\r\n6. 修复原生拓扑遗漏独立设备或完整分支的问题，工作台与 PNG 共用完整结果，并继续检查遗漏和重复身份。\r\n7. 增加采集进度，修复窗口大小与最大化状态保持，使用公司图标。\r\n8. 支持已发布的 1.0.0、1.0.1 直接更新并自动打开新工作台，自动处理旧安装器收尾误报；保留导出文件、采集包和本地业务名称。\r\n",
+        "version": "1.1.0"
+      },
+      {
+        "date": "2026-11-05",
+        "notes": "修复 Windows ARM64 Python 安装依赖时触发 Rust 编译失败；仅安装预编译包，默认软件源失败后尝试大陆镜像。",
+        "version": "1.0.1"
+      },
+      {
+        "date": "2026-11-05",
+        "notes": "首个正式版：真实拓扑高清 PNG 导出，支持手动检查更新、签名校验和失败恢复。",
+        "version": "1.0.0"
+      }
+    ],
+    "size": 605798,
+    "sha256": "3c825c2c33f1cfea4340777ef73b156d96a16be259b4993f4389b1bb0785a53a",
     "files": [
       "开始导出.bat",
       "使用说明.txt",
@@ -32,12 +69,14 @@
       "程序文件/updater.py",
       "程序文件/update_dialog.py",
       "程序文件/release_layout.py",
+      "程序文件/release_history.json",
       "程序文件/vlan_engine.py",
       "程序文件/vlan_gui.py",
       "程序文件/vlan_bridge.js",
       "程序文件/vlan-assistant-core.js",
       "程序文件/vlan_business_names.py",
       "程序文件/network_snapshot.py",
+      "程序文件/dhcp_model.py",
       "程序文件/workbench_collect.py",
       "程序文件/workbench_host.py",
       "程序文件/workbench_process.py",
@@ -47,7 +86,12 @@
       "程序文件/workbench/workbench.js",
       "程序文件/workbench/business-names.js",
       "程序文件/desktop_app.py",
+      "程序文件/device_logs.py",
+      "程序文件/controller_logs.py",
+      "程序文件/windows_notifications.py",
+      "程序文件/workbench/logs.js",
       "程序文件/workbench/desktop.js",
+      "程序文件/workbench/dhcp.js",
       "程序文件/workbench/vlan-ui.js",
       "程序文件/workbench/x6.js",
       "程序文件/workbench/x6.css",
@@ -57,9 +101,9 @@
       "程序文件/assets/公司图标.png"
     ],
     "urls": [
-      "https://gitee.com/recur_799/metaclouds-topology-releases/releases/download/v1.1.3/topology-exporter-1.1.3.zip",
-      "https://github.com/recur799/metaclouds-topology-releases/releases/download/v1.1.3/topology-exporter-1.1.3.zip"
+      "https://gitee.com/recur_799/metaclouds-topology-releases/releases/download/v1.1.4/topology-exporter-1.1.4.zip",
+      "https://github.com/recur799/metaclouds-topology-releases/releases/download/v1.1.4/topology-exporter-1.1.4.zip"
     ]
   },
-  "signature": "CR56BoifRro9A0MY4qw7NjC8DxvvsQghzFyjn/HRKydweqX3L2WE5H6vOS/81swpnHRYzXSObFK2BvwQNChBBA=="
+  "signature": "aT9pPWB5BovgCq7YD1cHkJRTcI2d8++rom4zICm6ex/KqONsgKfL9VMi9Gf8wi2VHAzUOKhcILqGhkV/9eTjBQ=="
 }
