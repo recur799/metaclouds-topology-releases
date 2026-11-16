@@ -2,13 +2,18 @@
   "payload": {
     "schema": 1,
     "product": "metaclouds-topology-exporter",
-    "version": "1.1.4",
+    "version": "1.1.5",
     "minimum_python": [
       3,
       10
     ],
-    "notes": "1. 工具更名为“元创云端运维巡检工具”，统一首页、窗口及运行组件准备界面的名称。\n2. 主机联网时启动后自动检查更新，运行期间每30分钟重查，网络恢复时再检查；只提示新版本，不自动弹窗或安装。\n3. 点击更新按钮可查看全部正式版本的更新明细，按版本从新到旧排列；断网时可查看本地随包附带的记录，用户确认后才更新并重启。\n4. 修复集中式网关及异构网络的拓扑遗漏，完善独立设备、未分配角色与外部设备的完整展示。\n5. Sundray RS6300、H3C Comware、MikroTik RouterOS 使用交换机图例；恢复原有绿色圆角拓扑连线，整理分支顺序和端口标签。\n6. 多邻居端口缺少对端确认时不再误判为物理直连，修复35F-JK-POE 24口误连总核心的问题，保留原始上报供核对。\n7. 完善 DHCP 地址池、分配记录、终端接入定位与补充告警，兼容 Windows x86、x64、ARM64 运行环境。\n",
+    "notes": "# 元创云端运维巡检工具 1.1.5\n\n推荐手动下载：元创云端运维巡检工具-1.1.5.zip。解压后运行文件夹中的“开始导出.bat”。\n\nGitHub 因附件命名限制显示为 MetaClouds-1.1.5.zip，解压目录仍为“元创云端运维巡检工具”。\n\ntopology-exporter-1.1.5.zip 用于兼容旧版本自动更新。两种包的程序内容相同。\n\n1. 简化 VLAN 变更助手，自动分析网关、DHCP、上联与双核心，按设备生成可复制命令；第三方设备单独提示对接要求。\n2. 新增可编辑 Word 和分页图片变更确认单，使用真实拓扑设备卡片展示相关路径。\n3. 新增控制器 LLD Excel 导出，按设备、业务和互联信息分表逐行记录。\n4. 修复 DHCP 客户端和告警设备定位，优化离线设备展示及路径核对。\n5. 修复方案导出入口可见性和 Windows 深色主题下 Logo 显示，拓扑导出入口更名为“导出拓扑图”。\n6. 手动下载包解压目录更名为“元创云端运维巡检工具”，保留旧版自动升级兼容。\n",
     "history": [
+      {
+        "version": "1.1.5",
+        "date": "2026-11-16",
+        "notes": "1. 简化 VLAN 变更助手，自动分析网关、DHCP、上联与双核心，按设备生成可复制命令；第三方设备单独提示对接要求。\n2. 新增可编辑 Word 和分页图片变更确认单，使用真实拓扑设备卡片展示相关路径。\n3. 新增控制器 LLD Excel 导出，按设备、业务和互联信息分表逐行记录。\n4. 修复 DHCP 客户端和告警设备定位，优化离线设备展示及路径核对。\n5. 修复方案导出入口可见性和 Windows 深色主题下 Logo 显示，拓扑导出入口更名为“导出拓扑图”。\n6. 手动下载包解压目录更名为“元创云端运维巡检工具”，保留旧版自动升级兼容。"
+      },
       {
         "version": "1.1.4",
         "date": "2026-11-16",
@@ -45,8 +50,8 @@
         "version": "1.0.0"
       }
     ],
-    "size": 605798,
-    "sha256": "3c825c2c33f1cfea4340777ef73b156d96a16be259b4993f4389b1bb0785a53a",
+    "size": 659895,
+    "sha256": "7986b621d004bf4d27069f793a934a0116a932d1236397ab2732a413414b5e0a",
     "files": [
       "开始导出.bat",
       "使用说明.txt",
@@ -74,6 +79,8 @@
       "程序文件/vlan_gui.py",
       "程序文件/vlan_bridge.js",
       "程序文件/vlan-assistant-core.js",
+      "程序文件/change-assistant.js",
+      "程序文件/workbench/change-ui.js",
       "程序文件/vlan_business_names.py",
       "程序文件/network_snapshot.py",
       "程序文件/dhcp_model.py",
@@ -98,12 +105,15 @@
       "程序文件/workbench/LICENSE-X6.txt",
       "程序文件/assets/公司Logo.png",
       "程序文件/assets/公司Logo.ico",
-      "程序文件/assets/公司图标.png"
+      "程序文件/assets/公司图标.png",
+      "程序文件/change_report.py",
+      "程序文件/assets/change-template.json",
+      "程序文件/lld_export.py"
     ],
     "urls": [
-      "https://gitee.com/recur_799/metaclouds-topology-releases/releases/download/v1.1.4/topology-exporter-1.1.4.zip",
-      "https://github.com/recur799/metaclouds-topology-releases/releases/download/v1.1.4/topology-exporter-1.1.4.zip"
+      "https://gitee.com/recur_799/metaclouds-topology-releases/releases/download/v1.1.5/topology-exporter-1.1.5.zip",
+      "https://github.com/recur799/metaclouds-topology-releases/releases/download/v1.1.5/topology-exporter-1.1.5.zip"
     ]
   },
-  "signature": "aT9pPWB5BovgCq7YD1cHkJRTcI2d8++rom4zICm6ex/KqONsgKfL9VMi9Gf8wi2VHAzUOKhcILqGhkV/9eTjBQ=="
+  "signature": "2nGBQU0IcQ7p0RHaU9oYdKrLua2hkEyo6JJT/8c02ZS7CXgFtY1NXphVcWjcZfJehIDVME6ZMebaIMAVeX00BA=="
 }
