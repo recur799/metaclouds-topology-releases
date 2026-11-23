@@ -2,13 +2,18 @@
   "payload": {
     "schema": 1,
     "product": "metaclouds-topology-exporter",
-    "version": "1.1.5",
+    "version": "1.1.6",
     "minimum_python": [
       3,
       10
     ],
-    "notes": "# 元创云端运维巡检工具 1.1.5\n\n推荐手动下载：元创云端运维巡检工具-1.1.5.zip。解压后运行文件夹中的“开始导出.bat”。\n\nGitHub 因附件命名限制显示为 MetaClouds-1.1.5.zip，解压目录仍为“元创云端运维巡检工具”。\n\ntopology-exporter-1.1.5.zip 用于兼容旧版本自动更新。两种包的程序内容相同。\n\n1. 简化 VLAN 变更助手，自动分析网关、DHCP、上联与双核心，按设备生成可复制命令；第三方设备单独提示对接要求。\n2. 新增可编辑 Word 和分页图片变更确认单，使用真实拓扑设备卡片展示相关路径。\n3. 新增控制器 LLD Excel 导出，按设备、业务和互联信息分表逐行记录。\n4. 修复 DHCP 客户端和告警设备定位，优化离线设备展示及路径核对。\n5. 修复方案导出入口可见性和 Windows 深色主题下 Logo 显示，拓扑导出入口更名为“导出拓扑图”。\n6. 手动下载包解压目录更名为“元创云端运维巡检工具”，保留旧版自动升级兼容。\n",
+    "notes": "1. 新增信锐 NAC 补充读取，将两套管理体系的交换机、AP 和已取得的客户端关系合并到同一张拓扑，保留来源与读取状态。\n2. 优化设备、VLAN 和 DHCP 客户端搜索定位，展示接入侧到对应网关的已知路径；缺失证据、候选位置和配置待核对项明确提示。\n3. 增加本地有效拓扑校验与历史回退，正常打开优先复用已有记录；拓扑与客户端数据由用户手动更新，部分失败和取消不覆盖有效版本。\n4. 区分物理直连、MAC 推断和人工确认，提供直连确认与撤销；人工确认不替代 VLAN 配置校验。\n5. 分离 DHCP 地址详情、VLAN 变更助手和 DHCP 变更助手，保留独立方案，继续支持 Word、分页图片、LLD Excel 与高清拓扑导出。\n6. 优化真实采集进度、重复点击控制、NAC 证书确认、接口状态与详情展示；增加客户端系统或无线厂商图标，以及第三方交换机厂商标识。\n7. 手动下载包启动文件更名为“启动元创云端运维巡检工具.bat”；在线更新保留旧启动入口，兼容已发布版本。\n",
     "history": [
+      {
+        "version": "1.1.6",
+        "date": "2026-11-23",
+        "notes": "1. 新增信锐 NAC 补充读取，将两套管理体系的交换机、AP 和已取得的客户端关系合并到同一张拓扑，保留来源与读取状态。\n2. 优化设备、VLAN 和 DHCP 客户端搜索定位，展示接入侧到对应网关的已知路径；缺失证据、候选位置和配置待核对项明确提示。\n3. 增加本地有效拓扑校验与历史回退，正常打开优先复用已有记录；拓扑与客户端数据由用户手动更新，部分失败和取消不覆盖有效版本。\n4. 区分物理直连、MAC 推断和人工确认，提供直连确认与撤销；人工确认不替代 VLAN 配置校验。\n5. 分离 DHCP 地址详情、VLAN 变更助手和 DHCP 变更助手，保留独立方案，继续支持 Word、分页图片、LLD Excel 与高清拓扑导出。\n6. 优化真实采集进度、重复点击控制、NAC 证书确认、接口状态与详情展示；增加客户端系统或无线厂商图标，以及第三方交换机厂商标识。\n7. 手动下载包启动文件更名为“启动元创云端运维巡检工具.bat”；在线更新保留旧启动入口，兼容已发布版本。"
+      },
       {
         "version": "1.1.5",
         "date": "2026-11-16",
@@ -50,11 +55,32 @@
         "version": "1.0.0"
       }
     ],
-    "size": 659895,
-    "sha256": "7986b621d004bf4d27069f793a934a0116a932d1236397ab2732a413414b5e0a",
+    "size": 1496244,
+    "sha256": "03ea4f95ad849650948b2bdf0129fc92fccfa78b628916751f96ee4f0889d377",
     "files": [
       "开始导出.bat",
       "使用说明.txt",
+      "程序文件/client_identity.py",
+      "程序文件/assets/mac-registry.json",
+      "程序文件/assets/identity-assets.json",
+      "程序文件/assets/identity-sources.txt",
+      "程序文件/workbench/identity-ui.js",
+      "程序文件/link_confirmation.py",
+      "程序文件/operation_progress.py",
+      "程序文件/local_state.py",
+      "程序文件/cache_health.py",
+      "程序文件/topology_evidence.py",
+      "程序文件/topology_probe.py",
+      "程序文件/assets/switch-rack.png",
+      "程序文件/native_scene.js",
+      "程序文件/workbench/topology-scene.js",
+      "程序文件/nac_snmp.py",
+      "程序文件/nac_profile.py",
+      "程序文件/sundray_nac.py",
+      "程序文件/nac_topology.py",
+      "程序文件/nac_web.py",
+      "程序文件/nac_web_data.py",
+      "程序文件/workbench/nac.js",
       "程序文件/gui.py",
       "程序文件/api_export.py",
       "程序文件/controller_api.py",
@@ -84,13 +110,20 @@
       "程序文件/vlan_business_names.py",
       "程序文件/network_snapshot.py",
       "程序文件/dhcp_model.py",
+      "程序文件/client_refresh.py",
+      "程序文件/client_tables.py",
+      "程序文件/client_location.py",
       "程序文件/workbench_collect.py",
       "程序文件/workbench_host.py",
       "程序文件/workbench_process.py",
       "程序文件/workbench_native.py",
       "程序文件/workbench/index.txt",
       "程序文件/workbench/workbench.css",
+      "程序文件/workbench/workspace-ui.css",
+      "程序文件/workbench/workspace-ui.js",
       "程序文件/workbench/workbench.js",
+      "程序文件/workbench/network-paths.js",
+      "程序文件/workbench/static-paths.js",
       "程序文件/workbench/business-names.js",
       "程序文件/desktop_app.py",
       "程序文件/device_logs.py",
@@ -111,9 +144,9 @@
       "程序文件/lld_export.py"
     ],
     "urls": [
-      "https://gitee.com/recur_799/metaclouds-topology-releases/releases/download/v1.1.5/topology-exporter-1.1.5.zip",
-      "https://github.com/recur799/metaclouds-topology-releases/releases/download/v1.1.5/topology-exporter-1.1.5.zip"
+      "https://gitee.com/recur_799/metaclouds-topology-releases/releases/download/v1.1.6/topology-exporter-1.1.6.zip",
+      "https://github.com/recur799/metaclouds-topology-releases/releases/download/v1.1.6/topology-exporter-1.1.6.zip"
     ]
   },
-  "signature": "2nGBQU0IcQ7p0RHaU9oYdKrLua2hkEyo6JJT/8c02ZS7CXgFtY1NXphVcWjcZfJehIDVME6ZMebaIMAVeX00BA=="
+  "signature": "k3WZSezDCMQpW6fjkVyfrOkF+zG4M69cpu/zm7WAtevQ7HT8fOWrQrqm3piRpuOifmmoK35XOaP7i6P9xdiHAw=="
 }
