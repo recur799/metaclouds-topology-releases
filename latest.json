@@ -2,13 +2,18 @@
   "payload": {
     "schema": 1,
     "product": "metaclouds-topology-exporter",
-    "version": "1.1.6",
+    "version": "1.1.7",
     "minimum_python": [
       3,
       10
     ],
-    "notes": "1. 新增信锐 NAC 补充读取，将两套管理体系的交换机、AP 和已取得的客户端关系合并到同一张拓扑，保留来源与读取状态。\n2. 优化设备、VLAN 和 DHCP 客户端搜索定位，展示接入侧到对应网关的已知路径；缺失证据、候选位置和配置待核对项明确提示。\n3. 增加本地有效拓扑校验与历史回退，正常打开优先复用已有记录；拓扑与客户端数据由用户手动更新，部分失败和取消不覆盖有效版本。\n4. 区分物理直连、MAC 推断和人工确认，提供直连确认与撤销；人工确认不替代 VLAN 配置校验。\n5. 分离 DHCP 地址详情、VLAN 变更助手和 DHCP 变更助手，保留独立方案，继续支持 Word、分页图片、LLD Excel 与高清拓扑导出。\n6. 优化真实采集进度、重复点击控制、NAC 证书确认、接口状态与详情展示；增加客户端系统或无线厂商图标，以及第三方交换机厂商标识。\n7. 手动下载包启动文件更名为“启动元创云端运维巡检工具.bat”；在线更新保留旧启动入口，兼容已发布版本。\n",
+    "notes": "1. 修复 Windows 主页面加载、工作台恢复与进入场所的等待处理，连接和采集展示实际阶段；超时、取消及迟到结果不覆盖当前状态。\n2. 修复内置浏览器访问 HTTPS 页面时的证书确认流程，避免确认后窗口退出；信任限定当前会话的地址与证书。\n3. 整理顶部操作、侧栏、详情和 DHCP 地址池布局；合并控制器与已绑定 NAC 的更新入口，统一显示各来源的更新时间和读取结果。\n4. 统一拓扑蓝色连线，用实线和虚线区分确认与待核实证据；完善深浅主题、品牌图标及交换机卡片，按实际接口数据展示端口状态、速率、光电类型与 PoE 信息，未知能力不补造。\n5. 增加右侧浏览器、PowerShell 终端及本地手册入口，保留客户端识别、完整路径定位、本地记录和离线导出。\n6. 保留 test.10 的变更助手、LLD 与变更文档改写；拓扑 PNG、分页图片和 Word 使用浅色印刷配色。工具保留部分完成和待确认提示，不把缺失数据算作读取成功。\n",
     "history": [
+      {
+        "version": "1.1.7",
+        "date": "2026-11-25",
+        "notes": "1. 修复 Windows 主页面加载、工作台恢复与进入场所的等待处理，连接和采集展示实际阶段；超时、取消及迟到结果不覆盖当前状态。\n2. 修复内置浏览器访问 HTTPS 页面时的证书确认流程，避免确认后窗口退出；信任限定当前会话的地址与证书。\n3. 整理顶部操作、侧栏、详情和 DHCP 地址池布局；合并控制器与已绑定 NAC 的更新入口，统一显示各来源的更新时间和读取结果。\n4. 统一拓扑蓝色连线，用实线和虚线区分确认与待核实证据；完善深浅主题、品牌图标及交换机卡片，按实际接口数据展示端口状态、速率、光电类型与 PoE 信息，未知能力不补造。\n5. 增加右侧浏览器、PowerShell 终端及本地手册入口，保留客户端识别、完整路径定位、本地记录和离线导出。\n6. 保留 test.10 的变更助手、LLD 与变更文档改写；拓扑 PNG、分页图片和 Word 使用浅色印刷配色。工具保留部分完成和待确认提示，不把缺失数据算作读取成功。"
+      },
       {
         "version": "1.1.6",
         "date": "2026-11-23",
@@ -55,11 +60,24 @@
         "version": "1.0.0"
       }
     ],
-    "size": 1496244,
-    "sha256": "03ea4f95ad849650948b2bdf0129fc92fccfa78b628916751f96ee4f0889d377",
+    "size": 41290804,
+    "sha256": "6a63fb1e4726a48540030952b23a91c69d13598fb712e1299a5225ffca12d0a3",
     "files": [
       "开始导出.bat",
       "使用说明.txt",
+      "程序文件/companion_terminal.py",
+      "程序文件/assets/configuration-guide.pdf.txt",
+      "程序文件/assets/configuration-guide-index.json",
+      "程序文件/workbench/vendor/xterm.js",
+      "程序文件/workbench/vendor/xterm.css",
+      "程序文件/workbench/vendor/xterm-fit.js",
+      "程序文件/workbench/vendor/xterm-license.txt",
+      "程序文件/workbench/vendor/xterm-fit-license.txt",
+      "程序文件/companion_pages.py",
+      "程序文件/workbench/companion.js",
+      "程序文件/workbench/companion.css",
+      "程序文件/assets/cli-manual.pdf.txt",
+      "程序文件/assets/cli-manual-index.json",
       "程序文件/client_identity.py",
       "程序文件/assets/mac-registry.json",
       "程序文件/assets/identity-assets.json",
@@ -74,6 +92,8 @@
       "程序文件/assets/switch-rack.png",
       "程序文件/native_scene.js",
       "程序文件/workbench/topology-scene.js",
+      "程序文件/workbench/topology-cards.js",
+      "程序文件/workbench/port-presentation.js",
       "程序文件/nac_snmp.py",
       "程序文件/nac_profile.py",
       "程序文件/sundray_nac.py",
@@ -136,7 +156,12 @@
       "程序文件/workbench/x6.js",
       "程序文件/workbench/x6.css",
       "程序文件/workbench/LICENSE-X6.txt",
+      "程序文件/assets/metaclouds-light.svg",
+      "程序文件/assets/metaclouds-dark.svg",
+      "程序文件/assets/metaclouds-symbol-light.svg",
+      "程序文件/assets/metaclouds-symbol-dark.svg",
       "程序文件/assets/公司Logo.png",
+      "程序文件/assets/公司Logo-深色.png",
       "程序文件/assets/公司Logo.ico",
       "程序文件/assets/公司图标.png",
       "程序文件/change_report.py",
@@ -144,9 +169,8 @@
       "程序文件/lld_export.py"
     ],
     "urls": [
-      "https://gitee.com/recur_799/metaclouds-topology-releases/releases/download/v1.1.6/topology-exporter-1.1.6.zip",
-      "https://github.com/recur799/metaclouds-topology-releases/releases/download/v1.1.6/topology-exporter-1.1.6.zip"
+      "https://github.com/recur799/metaclouds-topology-releases/releases/download/v1.1.7/topology-exporter-1.1.7.zip"
     ]
   },
-  "signature": "k3WZSezDCMQpW6fjkVyfrOkF+zG4M69cpu/zm7WAtevQ7HT8fOWrQrqm3piRpuOifmmoK35XOaP7i6P9xdiHAw=="
+  "signature": "3yvmjePqt+9vvscoLj9xg/zwqbzC1if8vDesvj0pmhYMcYSj0/Mv1S8JoxDDGUFowqkUocYv2SF4NhUDmU/wAQ=="
 }
