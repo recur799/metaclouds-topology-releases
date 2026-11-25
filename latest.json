@@ -2,13 +2,18 @@
   "payload": {
     "schema": 1,
     "product": "metaclouds-topology-exporter",
-    "version": "1.1.7",
+    "version": "1.1.8",
     "minimum_python": [
       3,
       10
     ],
-    "notes": "1. 修复 Windows 主页面加载、工作台恢复与进入场所的等待处理，连接和采集展示实际阶段；超时、取消及迟到结果不覆盖当前状态。\n2. 修复内置浏览器访问 HTTPS 页面时的证书确认流程，避免确认后窗口退出；信任限定当前会话的地址与证书。\n3. 整理顶部操作、侧栏、详情和 DHCP 地址池布局；合并控制器与已绑定 NAC 的更新入口，统一显示各来源的更新时间和读取结果。\n4. 统一拓扑蓝色连线，用实线和虚线区分确认与待核实证据；完善深浅主题、品牌图标及交换机卡片，按实际接口数据展示端口状态、速率、光电类型与 PoE 信息，未知能力不补造。\n5. 增加右侧浏览器、PowerShell 终端及本地手册入口，保留客户端识别、完整路径定位、本地记录和离线导出。\n6. 保留 test.10 的变更助手、LLD 与变更文档改写；拓扑 PNG、分页图片和 Word 使用浅色印刷配色。工具保留部分完成和待确认提示，不把缺失数据算作读取成功。\n",
+    "notes": "1. 修复首页拓扑定位后的视角重置：点击设备、空白、关闭详情、清除选择及调整窗口时保留缩放、位置和聚焦范围。\n2. 修复查找设备、查找 VLAN 浮窗与画布操作冲突，拖动及 AP 展开、下游折叠不再误触选择或自动适配全图。\n3. 完善拓扑平移和缩放：双指滑动或普通滚轮平移，捏合或 Ctrl＋滚轮缩放；统一缩放上下限，隔离详情和查找列表的滚动。\n4. 修复浅色主题下 AP 图案偏黑的问题，保持深色主题和导出图配色一致。\n5. 修复内置命令手册、配置指导的页码及章节定位，连续跳页以最后请求为准，关闭重开后不执行旧标签的排队跳转。\n6. 修复 DHCP 客户端定位时重复生成标记的问题，保留完整的已知接入路径。",
     "history": [
+      {
+        "version": "1.1.8",
+        "date": "2026-11-25",
+        "notes": "1. 修复首页拓扑定位后的视角重置：点击设备、空白、关闭详情、清除选择及调整窗口时保留缩放、位置和聚焦范围。\n2. 修复查找设备、查找 VLAN 浮窗与画布操作冲突，拖动及 AP 展开、下游折叠不再误触选择或自动适配全图。\n3. 完善拓扑平移和缩放：双指滑动或普通滚轮平移，捏合或 Ctrl＋滚轮缩放；统一缩放上下限，隔离详情和查找列表的滚动。\n4. 修复浅色主题下 AP 图案偏黑的问题，保持深色主题和导出图配色一致。\n5. 修复内置命令手册、配置指导的页码及章节定位，连续跳页以最后请求为准，关闭重开后不执行旧标签的排队跳转。\n6. 修复 DHCP 客户端定位时重复生成标记的问题，保留完整的已知接入路径。"
+      },
       {
         "version": "1.1.7",
         "date": "2026-11-25",
@@ -60,8 +65,8 @@
         "version": "1.0.0"
       }
     ],
-    "size": 41290804,
-    "sha256": "6a63fb1e4726a48540030952b23a91c69d13598fb712e1299a5225ffca12d0a3",
+    "size": 41292103,
+    "sha256": "02f2eb923366519eb2f7b02d66d13f9948da5e4b71c720e015a2dedcc531c915",
     "files": [
       "开始导出.bat",
       "使用说明.txt",
@@ -169,8 +174,8 @@
       "程序文件/lld_export.py"
     ],
     "urls": [
-      "https://github.com/recur799/metaclouds-topology-releases/releases/download/v1.1.7/topology-exporter-1.1.7.zip"
+      "https://github.com/recur799/metaclouds-topology-releases/releases/download/v1.1.8/topology-exporter-1.1.8.zip"
     ]
   },
-  "signature": "3yvmjePqt+9vvscoLj9xg/zwqbzC1if8vDesvj0pmhYMcYSj0/Mv1S8JoxDDGUFowqkUocYv2SF4NhUDmU/wAQ=="
+  "signature": "EatdlG0VS3cdADqUWh5wQW06Fzybx2nVe4F9z1FHo/X8UR2AjHGe/cYHE0JIAkzlMbPbMTJG3E8gkGRbW/jFCQ=="
 }
