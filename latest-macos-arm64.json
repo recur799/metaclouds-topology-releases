@@ -10,7 +10,7 @@
       15,
       0
     ],
-    "notes": "macOS 1.1.8：支持 Intel 与 M 芯片，修正应用图标，接通双源联网更新检查。",
+    "notes": "macOS 1.1.8：补齐 CFFI 原生验签依赖，修复已安装客户端的联网更新检查；支持 Intel 与 M 芯片。",
     "history": [
       {
         "version": "1.1.8",
@@ -68,12 +68,12 @@
         "version": "1.0.0"
       }
     ],
-    "size": 89957870,
-    "sha256": "54a5cfa8109621658e886984021e7e3be0d54d46ba69a12f14c94f105916b39e",
+    "size": 90017390,
+    "sha256": "31a9a37a3f3483dfb64dd003f8d73b4fc46f11a9f43a076a60469bef444ed35f",
     "urls": [
-      "https://gitee.com/recur_799/metaclouds-topology-releases/releases/download/v1.1.8/MetaClouds-1.1.8-macos-arm64-r2-update.zip",
-      "https://github.com/recur799/metaclouds-topology-releases/releases/download/v1.1.8-macos-candidate-r2/MetaClouds-1.1.8-macos-arm64-update.zip"
+      "https://gitee.com/recur_799/metaclouds-topology-macos-releases/releases/download/v1.1.8/MetaClouds-1.1.8-macos-arm64-r3-update.zip",
+      "https://github.com/recur799/metaclouds-topology-releases/releases/download/v1.1.8-macos-candidate-r3/MetaClouds-1.1.8-macos-arm64-update.zip"
     ]
   },
-  "signature": "uuSFcrJFjaucEejj6uwGLUpXPyaEUZmZpoNbd9jimzC5cEFKYZlKjHgObx1PDvE7GbxmA8zOFpdEKWNu9Qi0CA=="
+  "signature": "U2k3xI3AAYmt/iNBWLXbMI05iAzlVvLXHkA4RAj9NJ78MO4u6aefjyEp87PjY+Y3Q8IgAlPRmq9qszX7Y+BsDA=="
 }
