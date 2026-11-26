@@ -1,0 +1,129 @@
+name: Accept public macOS 1.1.8 r3 installers
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/macos-public-install.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  installed:
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-26-intel
+            arch: x86_64
+          - runner: macos-26
+            arch: arm64
+    runs-on: ${{ matrix.runner }}
+    env:
+      ACCEPT_ARCH: ${{ matrix.arch }}
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          architecture: ${{ matrix.arch == 'x86_64' && 'x64' || 'arm64' }}
+      - name: Download and install exact public r3 artifacts, exercise the bundled updater and Chromium
+        run: |
+          python - <<'PY'
+          import concurrent.futures, hashlib, json, os, platform, plistlib, subprocess, sys, urllib.request, zipfile
+          from pathlib import Path
+          arch = os.environ['ACCEPT_ARCH']
+          if platform.machine() != arch or platform.system() != 'Darwin':
+              raise RuntimeError('Native Mac architecture mismatch.')
+          expected = {
+              'arm64': ('31a9a37a3f3483dfb64dd003f8d73b4fc46f11a9f43a076a60469bef444ed35f', 'b559bbb577d6768358fd7c36d1eecb72949122354194ad169404aefbb692c65f'),
+              'x86_64': ('2170620eaa077124b05f32784f589bdc6b28ac777fa796cf10d03e47b9d0de65', '7025999f36a96760b03d995a986725812c3a23b0127f6115643b6da3aefcb80e'),
+          }
+          output = Path('acceptance').resolve()
+          output.mkdir()
+          base = 'MetaClouds-1.1.8-macos-' + arch
+          public = 'https://github.com/recur799/metaclouds-topology-releases/releases/download/v1.1.8-macos-candidate-r3/'
+          def download(item):
+              suffix, sha = item
+              path = output / (base + suffix)
+              with urllib.request.urlopen(public + path.name, timeout=30) as response:
+                  body = response.read(100_000_001)
+              if len(body) > 100_000_000 or hashlib.sha256(body).hexdigest() != sha:
+                  raise RuntimeError('Published artifact digest mismatch.')
+              path.write_bytes(body)
+          with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
+              list(pool.map(download, zip(('-update.zip', '.dmg'), expected[arch])))
+          package, dmg = output / (base + '-update.zip'), output / (base + '.dmg')
+          # Reuse the verifier already distributed in the hash-pinned public App.
+          verifier = output / 'verifier'
+          verifier.mkdir()
+          with zipfile.ZipFile(package) as archive:
+              for name in ('macos_updater.py', 'updater.py', 'update_config.py', 'release_layout.py'):
+                  (verifier / name).write_bytes(archive.read('MetaClouds.app/Contents/Resources/程序文件/' + name))
+          sys.path.insert(0, str(verifier))
+          from macos_updater import validate_archive
+          validate_archive(package)
+          mount = Path(os.environ['RUNNER_TEMP']) / 'MetaClouds-r3-DMG'
+          mount.mkdir()
+          app = Path.home() / 'Applications/MetaClouds.app'
+          app.parent.mkdir(exist_ok=True)
+          if app.exists(): raise RuntimeError('Acceptance target already exists.')
+          def launch(bundle, name):
+              trace = output / name
+              env = {**os.environ, 'METACLOUDS_VERIFY_INSTALL': '1', 'METACLOUDS_STARTUP_TRACE': str(trace)}
+              subprocess.run(['/usr/bin/open', '-W', '-n', str(bundle), '--args', '--verify-install'],
+                  env=env, timeout=90, check=True)
+              text = trace.read_text(encoding='utf-8')
+              print(text, flush=True)
+              if 'verify argument present: True' not in text or 'application main returned' not in text:
+                  raise RuntimeError('Actual workbench launch did not finish.')
+          subprocess.run(['/usr/bin/hdiutil', 'verify', str(dmg)], timeout=60, check=True)
+          subprocess.run(['/usr/bin/hdiutil', 'attach', '-readonly', '-nobrowse', '-mountpoint', str(mount), str(dmg)], timeout=60, check=True)
+          try:
+              subprocess.run(['/usr/bin/codesign', '--verify', '--deep', '--strict', str(mount / 'MetaClouds.app')], timeout=60, check=True)
+              launch(mount / 'MetaClouds.app', 'mounted-startup.log')
+              subprocess.run(['/usr/bin/ditto', str(mount / 'MetaClouds.app'), str(app)], timeout=60, check=True)
+          finally:
+              subprocess.run(['/usr/bin/hdiutil', 'detach', str(mount)], timeout=60, check=True)
+          subprocess.run(['/usr/bin/codesign', '--verify', '--deep', '--strict', str(app)], timeout=60, check=True)
+          info = plistlib.loads((app / 'Contents/Info.plist').read_bytes())
+          if (info.get('CFBundleIdentifier') != 'com.metaclouds.topology-exporter'
+                  or info.get('CFBundleShortVersionString') != '1.1.8' or info.get('CFBundleVersion') != '11803'):
+              raise RuntimeError('Installed bundle is not the r3 repair.')
+          launch(app, 'installed-startup.log')
+          executable = app / 'Contents/MacOS' / info['CFBundleExecutable']
+          with (output / 'frozen-update.log').open('w') as log:
+              result = subprocess.run([str(executable), '--task', 'check-update'], stdout=log,
+                  stderr=subprocess.STDOUT, text=True, timeout=90)
+          text = (output / 'frozen-update.log').read_text(encoding='utf-8')
+          print(text, flush=True)
+          result.check_returncode()
+          checked = json.loads(text)
+          if checked != dict(current='1.1.8', latest='1.1.8', architecture=arch, update_available=False):
+              raise RuntimeError('Installed App failed actual signed update detection.')
+          with (output / 'browser-install.log').open('w') as log:
+              subprocess.run([str(executable), '--task', 'browser-install'], stdout=log,
+                  stderr=subprocess.STDOUT, timeout=240, check=True)
+          drivers = list((app / 'Contents/Resources').rglob('playwright/driver/node'))
+          if len(drivers) != 1: raise RuntimeError('Bundled Node driver missing.')
+          node = drivers[0]
+          html = output / 'render.html'
+          html.write_text('<!doctype html><meta charset="utf-8"><h1>MetaClouds 1.1.8 r3</h1>', encoding='utf-8')
+          screenshot = output / 'chromium-render.png'
+          env = {**os.environ, 'PLAYWRIGHT_BROWSERS_PATH': str(Path.home() / 'Library/Application Support/MetaCloudsTopologyExporter/browsers')}
+          subprocess.run([str(node), str(node.parent / 'package/cli.js'), 'screenshot', '--browser', 'chromium',
+              '--viewport-size', '800,600', html.as_uri(), str(screenshot)], env=env, timeout=60, check=True)
+          if not screenshot.read_bytes().startswith(b'\x89PNG\r\n\x1a\n') or screenshot.stat().st_size < 2000:
+              raise RuntimeError('Actual Chromium render invalid.')
+          (output / 'installed.json').write_text(json.dumps(dict(architecture=arch, macos=platform.mac_ver()[0],
+              version='1.1.8', build_version='11803', zip_sha256=expected[arch][0], dmg_sha256=expected[arch][1],
+              mounted_startup_verified=True, dmg_install_verified=True, launch_services_startup_verified=True,
+              packaged_update_check_verified=True, chromium_download_verified=True, chromium_render_verified=True), indent=2), encoding='utf-8')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: installed-acceptance-${{ matrix.arch }}
+          path: |
+            acceptance/*.json
+            acceptance/*.log
+            acceptance/*.png
+          if-no-files-found: error
