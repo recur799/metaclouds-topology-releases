@@ -3,7 +3,7 @@
     "schema": 1,
     "product": "metaclouds-topology-exporter",
     "version": "1.1.9",
-    "notes": "1. 打开工具先显示本地数据，每个场所每天首次进入时提示更新；选择后才开始采集。\n2. 设备更新按所选设备及上下游范围读取，修复 NAC 设备误触发全网更新；完成后显示连接和配置的前后变化。\n3. 优化设备、VLAN 和接口搜索，保留关键词并支持再次展开候选；查询后显示相关上下游路径。\n4. 完善 ARP、MAC 与已知邻接的路径核对，保留学习接口和判断依据，区分推断与已确认直连。\n5. VLAN 助手增加互联接口追加 VLAN；DHCP 新建复用 VLAN、双核心网关准备流程，核对地址、网段和多活 MAC 冲突。\n6. 统一变更助手布局与按钮，增加分层大纲、设备管理入口和可复制的 OA 概述；修复命令复制，补齐 DHCP Word 与图片导出。\n7. 完善内置资料的页码、章节跳转、查找和缩放；右侧页面支持最大化与还原，保留阅读位置。\n8. 增加设备账号模板导入和诊断日志导出，按设备能力提供 SSH、控制器终端或 NAC 管理入口。\n9. Windows 与 macOS Intel、M 芯片版本同步更新；保留 Mac r3 的联网更新验签修复。采集与方案生成不自动下发配置。\n\nMac 双芯片版通过自动验收后发布；实机业务测试由维护者在上线后完成。\n\nGitee 附件存储受限，本次 Windows 更新包通过 GitHub 下载。",
+    "notes": "1. 打开工具先显示本地数据，每个场所每天首次进入时提示更新；选择后才开始采集。\n2. 设备更新按所选设备及上下游范围读取，修复 NAC 设备误触发全网更新；完成后显示连接和配置的前后变化。\n3. 优化设备、VLAN 和接口搜索，保留关键词并支持再次展开候选；查询后显示相关上下游路径。\n4. 完善 ARP、MAC 与已知邻接的路径核对，保留学习接口和判断依据，区分推断与已确认直连。\n5. VLAN 助手增加互联接口追加 VLAN；DHCP 新建复用 VLAN、双核心网关准备流程，核对地址、网段和多活 MAC 冲突。\n6. 统一变更助手布局与按钮，增加分层大纲、设备管理入口和可复制的 OA 概述；修复命令复制，补齐 DHCP Word 与图片导出。\n7. 完善内置资料的页码、章节跳转、查找和缩放；右侧页面支持最大化与还原，保留阅读位置。\n8. 增加设备账号模板导入和诊断日志导出，按设备能力提供 SSH、控制器终端或 NAC 管理入口。\n9. Windows 与 macOS Intel、M 芯片版本同步更新；保留 Mac r3 的联网更新验签修复。采集与方案生成不自动下发配置。\n\nMac 双芯片版通过自动验收后发布；实机业务测试由维护者在上线后完成。\n",
     "history": [
       {
         "version": "1.1.9",
@@ -69,6 +69,7 @@
     "size": 44570323,
     "sha256": "db92be02a6f9671f85fe541525bd47fc824b79d64285d31e38043744e5cbf931",
     "urls": [
+      "https://gitee.com/recur_799/metaclouds-topology-releases/releases/download/v1.1.9/topology-exporter-1.1.9.zip",
       "https://github.com/recur799/metaclouds-topology-releases/releases/download/v1.1.9/topology-exporter-1.1.9.zip"
     ],
     "minimum_python": [
@@ -206,5 +207,5 @@
       "程序文件/lld_export.py"
     ]
   },
-  "signature": "RbIWy436iFRN0aJ+CZnkfYEHmoWzExtFv22xZd4w3DIdujsZCsg7MVHEL0nXEN5Fc2xVXBshvmIBiZwgcr/sBQ=="
+  "signature": "Wm5D6gM7lMuwbCvhsouTR7I7AJDuo524gLP3yAUWkKcZiOZwhi01FR2OMIBsrQa+sgQobH03Wvzo8Rg16OXXCA=="
 }
